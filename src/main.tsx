@@ -6,6 +6,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import AppBar from '@mui/material/AppBar';
 import ButtonGroup from '@mui/material/ButtonGroup';
+import Typography from '@mui/material/Typography';
 
 // Page imports
 import Home from "./Home.tsx";
@@ -21,14 +22,14 @@ function App() {
     <BrowserRouter>
       <AppBar position="static" className="Navbar">
         <Toolbar>
-          <ButtonGroup>
-            <Button ><Link to="/" under-line="none">Home</Link> </Button>
-            <Button ><Link to="/enroll_student">Manage Students</Link> </Button>
-            <Button ><Link to="/add_instructor">Manage Instructors</Link> </Button>
-            <Button ><Link to="/add_course">Manage Courses</Link> </Button>
-            <Button ><Link to="/register">Register for Courses</Link> </Button>
-            <Button ><Link to="/drop">Drop Courses</Link> </Button>
-          </ButtonGroup>
+          
+            <Button href="/"><Typography sx={{color:'white',textDecoration: 'none'}}>Home</Typography></Button>
+            <Button href="/enroll_student"><Typography sx={{color:'white',textDecoration: 'none'}}>Manage Students</Typography></Button>
+            <Button href="/add_instructor"><Typography sx={{color:'white',textDecoration: 'none'}}>Manage Instructors</Typography></Button>
+            <Button href="/add_course"><Typography sx={{color:'white',textDecoration: 'none'}}>Manage Courses</Typography></Button>
+            <Button href="/register"><Typography sx={{color:'white',textDecoration: 'none'}}>Register for Courses</Typography></Button>
+            <Button href="/drop"><Typography sx={{color:'white',textDecoration: 'none'}}>Drop Courses</Typography></Button>
+          
         </Toolbar>
       </AppBar>
       <Routes>
