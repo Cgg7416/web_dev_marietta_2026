@@ -13,7 +13,7 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import { MenuItem } from '@mui/material';
 import Link from "@mui/material/Link";
-import MenuOpen from "@mui/icons-material/MenuOpen";
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 
 // Page imports
 import Home from "./Home.tsx";
@@ -23,6 +23,9 @@ import Drop_Course from "./course_management/Drop.tsx";
 import Student_Management from "./user_management/Students.tsx";
 import Instructor_Management from "./user_management/Instructors.tsx";
 import Manual from "./manual/Manual.tsx";
+import {lightMode, darkMode} from "./ColorThemes";
+
+const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
 
 function App() {
 
@@ -42,6 +45,7 @@ function App() {
   };
 
   return (
+    <ThemeProvider theme={isDarkMode?darkMode:lightMode}>
     <BrowserRouter>
       <AppBar position="static" className="Navbar" sx={{width:1}}>
         
@@ -87,6 +91,7 @@ function App() {
         <Route path="/manual" element={<Manual />}/>
       </Routes>
     </BrowserRouter>
+    </ThemeProvider>
   )
 }
 

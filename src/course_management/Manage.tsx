@@ -8,6 +8,7 @@ import InputLabel from "@mui/material/InputLabel";
 import NumberField from '../mui_material_components/NumberField';
 import Button from "@mui/material/Button";
 import FormGroup from "@mui/material/FormGroup";
+import { Typography } from '@mui/material';
 
 // Material Imports
 //import Stack from '@mui/material/Stack';
@@ -16,6 +17,8 @@ export default function Course_Management() {
       return (
             <>
             
+            <Typography variant="h1">Course Management</Typography>
+
             <Add_Course/>
 
             </>
@@ -57,10 +60,10 @@ function Add_Course() {
 
       return ( 
             <Box component="form"
-            sx={{backgroundColor:"white", pb:1/20}}>
+            sx={{pb:1/20}}>
 
                   <FormGroup>
-                  <InputLabel id="semester">Semester</InputLabel>
+                  <InputLabel id="semester" sx={{textAlign:"left"}}>Semester</InputLabel>
                   <Select
                         labelId="semester"
                         id="semester_select"
