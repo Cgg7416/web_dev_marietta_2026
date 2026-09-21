@@ -1,13 +1,6 @@
 import {
-  AppBar,
-  Toolbar,
   Typography,
   Box,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
   TextField,
   Button,
   Paper,
@@ -17,8 +10,6 @@ import {
   MenuItem,
 } from "@mui/material";
 
-const drawerWidth = 240;
-
 function EnrollStudent() {
   return (
     <Box
@@ -26,200 +17,15 @@ function EnrollStudent() {
         display: "flex",
         minHeight: "100vh",
         flexDirection: "column",
-        backgroundColor: "#121212",
-        color: "white",
       }}
     >
-      {/* Header */}
-      <AppBar
-        position="static"
-        sx={{
-          backgroundColor: "#1e1e1e",
-          color: "white",
-        }}
-      >
-        <Toolbar>
-          <Typography
-            variant="h4"
-            component="h1"
-            sx={{ color: "white" }}
-          >
-            Course Registration System
-          </Typography>
-        </Toolbar>
-      </AppBar>
-
-      {/* Main Content */}
-      <Box sx={{ display: "flex", flex: 1 }}>
-
-        {/* Navigation */}
-        <Drawer
-          variant="permanent"
-          sx={{
-            width: drawerWidth,
-            flexShrink: 0,
-
-            "& .MuiDrawer-paper": {
-              width: drawerWidth,
-              boxSizing: "border-box",
-              backgroundColor: "#1e1e1e",
-              color: "white",
-            },
-          }}
-        >
-          <Box sx={{ padding: 2 }}>
-            <Typography
-              variant="h6"
-              sx={{ color: "white" }}
-            >
-              Navigation
-            </Typography>
-          </Box>
-
-          <List>
-
-            <ListItem disablePadding>
-              <ListItemButton
-                component="a"
-                href="/"
-                sx={{
-                  color: "white",
-                  "&:hover": {
-                    backgroundColor: "#333333",
-                  },
-                }}
-              >
-                <ListItemText
-                  primary="Home"
-                  slotProps={{
-                    primary: {
-                      sx: { color: "white" },
-                    },
-                  }}
-                />
-              </ListItemButton>
-            </ListItem>
-
-            <ListItem disablePadding>
-              <ListItemButton
-                component="a"
-                href="/enroll-student"
-                sx={{
-                  color: "white",
-                  "&:hover": {
-                    backgroundColor: "#333333",
-                  },
-                }}
-              >
-                <ListItemText
-                  primary="Enroll Student"
-                  slotProps={{
-                    primary: {
-                      sx: { color: "white" },
-                    },
-                  }}
-                />
-              </ListItemButton>
-            </ListItem>
-
-            <ListItem disablePadding>
-              <ListItemButton
-                component="a"
-                href="/add-instructor"
-                sx={{
-                  color: "white",
-                  "&:hover": {
-                    backgroundColor: "#333333",
-                  },
-                }}
-              >
-                <ListItemText
-                  primary="Add Instructor"
-                  slotProps={{
-                    primary: {
-                      sx: { color: "white" },
-                    },
-                  }}
-                />
-              </ListItemButton>
-            </ListItem>
-
-            <ListItem disablePadding>
-              <ListItemButton
-                component="a"
-                href="/add-course"
-                sx={{
-                  color: "white",
-                  "&:hover": {
-                    backgroundColor: "#333333",
-                  },
-                }}
-              >
-                <ListItemText
-                  primary="Add Course"
-                  slotProps={{
-                    primary: {
-                      sx: { color: "white" },
-                    },
-                  }}
-                />
-              </ListItemButton>
-            </ListItem>
-
-            <ListItem disablePadding>
-              <ListItemButton
-                component="a"
-                href="/register-course"
-                sx={{
-                  color: "white",
-                  "&:hover": {
-                    backgroundColor: "#333333",
-                  },
-                }}
-              >
-                <ListItemText
-                  primary="Register Course"
-                  slotProps={{
-                    primary: {
-                      sx: { color: "white" },
-                    },
-                  }}
-                />
-              </ListItemButton>
-            </ListItem>
-
-            <ListItem disablePadding>
-              <ListItemButton
-                component="a"
-                href="/drop-course"
-                sx={{
-                  color: "white",
-                  "&:hover": {
-                    backgroundColor: "#333333",
-                  },
-                }}
-              >
-                <ListItemText
-                  primary="Drop Course"
-                  slotProps={{
-                    primary: {
-                      sx: { color: "white" },
-                    },
-                  }}
-                />
-              </ListItemButton>
-            </ListItem>
-
-          </List>
-        </Drawer>
-
         {/* Enroll Student Form */}
         <Box
           component="main"
           sx={{
             flexGrow: 1,
             padding: 4,
-            backgroundColor: "#121212",
+            backgroundColor: "secondary",
           }}
         >
           <Paper
@@ -228,17 +34,15 @@ function EnrollStudent() {
               padding: 4,
               maxWidth: 600,
               margin: "0 auto",
-              backgroundColor: "#1e1e1e",
-              color: "white",
+              backgroundColor: "secondary",
+              color: "primary",
             }}
           >
             <Typography
               variant="h4"
-              component="h2"
+              component="h1"
               gutterBottom
-              sx={{
-                color: "white",
-              }}
+              color="textPrimary"
             >
               Enroll Student
             </Typography>
@@ -259,32 +63,32 @@ function EnrollStudent() {
                 variant="outlined"
                 fullWidth
                 sx={{
-                  backgroundColor: "white",
+                  backgroundColor: "primary",
                   borderRadius: 1,
 
                   "& .MuiInputLabel-root": {
-                    color: "black",
+                    color: "secondary",
                   },
 
                   "& .MuiInputLabel-root.Mui-focused": {
-                    color: "black",
+                    color: "secondary",
                   },
 
                   "& .MuiOutlinedInput-input": {
-                    color: "black",
+                    color: "secondary",
                   },
 
                   "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "white",
+                    borderColor: "primary",
                   },
 
                   "&:hover .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "white",
+                    borderColor: "primary",
                   },
 
                   "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
                     {
-                      borderColor: "white",
+                      borderColor: "primary",
                     },
                 }}
               />
@@ -296,32 +100,32 @@ function EnrollStudent() {
                 variant="outlined"
                 fullWidth
                 sx={{
-                  backgroundColor: "white",
+                  backgroundColor: "primary",
                   borderRadius: 1,
 
                   "& .MuiInputLabel-root": {
-                    color: "black",
+                    color: "secondary",
                   },
 
                   "& .MuiInputLabel-root.Mui-focused": {
-                    color: "black",
+                    color: "secondary",
                   },
 
                   "& .MuiOutlinedInput-input": {
-                    color: "black",
+                    color: "secondary",
                   },
 
                   "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "white",
+                    borderColor: "primary",
                   },
 
                   "&:hover .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "white",
+                    borderColor: "primary",
                   },
 
                   "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
                     {
-                      borderColor: "white",
+                      borderColor: "primary",
                     },
                 }}
               />
@@ -330,36 +134,36 @@ function EnrollStudent() {
               <FormControl
                 fullWidth
                 sx={{
-                  backgroundColor: "white",
+                  backgroundColor: "primary",
                   borderRadius: 1,
 
                   "& .MuiInputLabel-root": {
-                    color: "black",
+                    color: "secondary",
                   },
 
                   "& .MuiInputLabel-root.Mui-focused": {
-                    color: "black",
+                    color: "secondary",
                   },
 
                   "& .MuiOutlinedInput-root": {
-                    color: "black",
+                    color: "secondary",
                   },
 
                   "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "white",
+                    borderColor: "primary",
                   },
 
                   "&:hover .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "white",
+                    borderColor: "primary",
                   },
 
                   "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
                     {
-                      borderColor: "white",
+                      borderColor: "primary",
                     },
 
                   "& .MuiSelect-icon": {
-                    color: "black",
+                    color: "secondary",
                   },
                 }}
               >
@@ -398,32 +202,32 @@ function EnrollStudent() {
                 variant="outlined"
                 fullWidth
                 sx={{
-                  backgroundColor: "white",
+                  backgroundColor: "primary",
                   borderRadius: 1,
 
                   "& .MuiInputLabel-root": {
-                    color: "black",
+                    color: "secondary",
                   },
 
                   "& .MuiInputLabel-root.Mui-focused": {
-                    color: "black",
+                    color: "secondary",
                   },
 
                   "& .MuiOutlinedInput-input": {
-                    color: "black",
+                    color: "secondary",
                   },
 
                   "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "white",
+                    borderColor: "primary",
                   },
 
                   "&:hover .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "white",
+                    borderColor: "primary",
                   },
 
                   "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
                     {
-                      borderColor: "white",
+                      borderColor: "primary",
                     },
                 }}
               />
@@ -435,32 +239,32 @@ function EnrollStudent() {
                 variant="outlined"
                 fullWidth
                 sx={{
-                  backgroundColor: "white",
+                  backgroundColor: "primary",
                   borderRadius: 1,
 
                   "& .MuiInputLabel-root": {
-                    color: "black",
+                    color: "secondary",
                   },
 
                   "& .MuiInputLabel-root.Mui-focused": {
-                    color: "black",
+                    color: "secondary",
                   },
 
                   "& .MuiOutlinedInput-input": {
-                    color: "black",
+                    color: "secondary",
                   },
 
                   "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "white",
+                    borderColor: "primary",
                   },
 
                   "&:hover .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "white",
+                    borderColor: "primary",
                   },
 
                   "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
                     {
-                      borderColor: "white",
+                      borderColor: "primary",
                     },
                 }}
               />
@@ -471,12 +275,12 @@ function EnrollStudent() {
                 variant="contained"
                 size="large"
                 sx={{
-                  backgroundColor: "white",
-                  color: "black",
+                  backgroundColor: "primary",
+                  color: "secondary",
                   fontWeight: "bold",
 
                   "&:hover": {
-                    backgroundColor: "#dddddd",
+                    backgroundColor: "info",
                   },
                 }}
               >
@@ -487,27 +291,6 @@ function EnrollStudent() {
           </Paper>
         </Box>
       </Box>
-
-      {/* Footer */}
-      <Box
-        component="footer"
-        sx={{
-          padding: 2,
-          textAlign: "center",
-          backgroundColor: "#1e1e1e",
-          color: "white",
-        }}
-      >
-        <Typography
-          variant="body2"
-          sx={{
-            color: "white",
-          }}
-        >
-          Group Members: Collin Gladen, Group Member 2, Group Member 3
-        </Typography>
-      </Box>
-    </Box>
   );
 }
 

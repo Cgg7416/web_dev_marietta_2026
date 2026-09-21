@@ -13,7 +13,8 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import { MenuItem } from '@mui/material';
 import Link from "@mui/material/Link";
-import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import Box from "@mui/material/Box";
+import { ThemeProvider} from '@mui/material/styles';
 
 // Page imports
 import Home from "./Home.tsx";
@@ -90,6 +91,8 @@ function App() {
         <Route path='/drop' element={<Drop_Course />} />
         <Route path="/manual" element={<Manual />}/>
       </Routes>
+
+      <Footer />
     </BrowserRouter>
     </ThemeProvider>
   )
@@ -105,6 +108,27 @@ function Desktop_App_Bar() {
       <Button href="/register" variant="text" sx={{width:{sm: 1/5, md: 1/6}, p: {md: "None",sm:1}}}><Typography sx={{color:'white',textDecoration: 'none'}}>Register Courses</Typography></Button>
       <Button href="/drop" variant="text" sx={{width:1/6, p: {md: "None",sm:1}}}><Typography sx={{color:'white',textDecoration: 'none'}}>Drop Courses</Typography></Button>
     </Toolbar>
+  )
+}
+
+function Footer() {
+  return(
+      <Box
+        component="footer"
+        sx={{
+          padding: 2,
+          textAlign: "center",
+          backgroundColor: "#1e1e1e",
+          color: "white",
+        }}
+      >
+        <Typography
+          variant="body2"
+          sx={{ color: "white" }}
+        >
+          Group Members: Collin Gladen, Group Member 2, Group Member 3
+        </Typography>
+      </Box>
   )
 }
 

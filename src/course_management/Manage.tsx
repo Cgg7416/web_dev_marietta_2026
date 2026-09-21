@@ -8,7 +8,7 @@ import InputLabel from "@mui/material/InputLabel";
 import NumberField from '../mui_material_components/NumberField';
 import Button from "@mui/material/Button";
 import FormGroup from "@mui/material/FormGroup";
-import { Typography } from '@mui/material';
+import { Typography, Paper } from '@mui/material';
 
 // Material Imports
 //import Stack from '@mui/material/Stack';
@@ -16,8 +16,6 @@ import { Typography } from '@mui/material';
 export default function Course_Management() {
       return (
             <>
-            
-            <Typography variant="h1">Course Management</Typography>
 
             <Add_Course/>
 
@@ -59,10 +57,54 @@ function Add_Course() {
       }
 
       return ( 
-            <Box component="form"
-            sx={{pb:1/20}}>
+            <Box
+      sx={{
+        display: "flex",
+        minHeight: "100vh",
+        flexDirection: "column",
+        backgroundColor: "secondary",
+        color: "primary",
+      }}
+    >
+        {/* Add Instructor Form */}
+        <Box
+          component="main"
+          sx={{
+            flexGrow: 1,
+            padding: 4,
+            backgroundColor: "secondary",
+          }}
+        >
+          <Paper
+            elevation={3}
+            sx={{
+              padding: 4,
+              maxWidth: 600,
+              margin: "0 auto",
+              backgroundColor: "secondary",
+              color: "primary",
+              gap: 2,
+            }}
+          >
 
-                  <FormGroup>
+            <Typography
+              variant="h4"
+              color="textPrimary"
+              component="h1"
+              gutterBottom
+            >
+              Add Course
+            </Typography>
+
+            <Box
+              component="form"
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 2,
+              }}
+            >
+                  
                   <InputLabel id="semester" sx={{textAlign:"left"}}>Semester</InputLabel>
                   <Select
                         labelId="semester"
@@ -79,22 +121,172 @@ function Add_Course() {
                 <TextField label="Course Year" id="courseYear" type="number" slotProps={{ htmlInput: { min: 2008, max: 2050 } }} />
                 <NumberField label="Course Year" id="courseYear" min={2008} max={2050} />
                 
-                </FormGroup>
+                
 
-            <FormGroup>
-                <TextField id="coursePrefix" label="Course Prefix" variant="outlined" />
+            
+                <TextField id="coursePrefix" label="Course Prefix" variant="outlined"
+                fullWidth
+                sx={{
+                  backgroundColor: "primary",
+                  borderRadius: 1,
 
-                <TextField id="courseNumber" label="Course Number" variant="outlined" />
+                  "& .MuiInputLabel-root": {
+                    color: "secondary",
+                  },
 
-                <TextField id="courseSection" label="Course Section" variant="outlined" />
+                  "& .MuiInputLabel-root.Mui-focused": {
+                    color: "secondary",
+                  },
 
-                <TextField id="courseName" label="Course Name" variant="outlined" />
+                  "& .MuiOutlinedInput-input": {
+                    color: "secondary",
+                  },
 
-                <TextField id="room" label="Room" variant="outlined" />
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "primary",
+                  },
 
-            </FormGroup>
+                  "&:hover .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "primary",
+                  },
 
-            <FormGroup>
+                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                    {
+                      borderColor: "primary",
+                    },
+                }} />
+
+                <TextField id="courseNumber" label="Course Number" variant="outlined"
+                fullWidth
+                sx={{
+                  backgroundColor: "primary",
+                  borderRadius: 1,
+
+                  "& .MuiInputLabel-root": {
+                    color: "secondary",
+                  },
+
+                  "& .MuiInputLabel-root.Mui-focused": {
+                    color: "secondary",
+                  },
+
+                  "& .MuiOutlinedInput-input": {
+                    color: "secondary",
+                  },
+
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "primary",
+                  },
+
+                  "&:hover .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "primary",
+                  },
+
+                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                    {
+                      borderColor: "primary",
+                    },
+                }} />
+
+                <TextField id="courseSection" label="Course Section" variant="outlined"
+                fullWidth
+                sx={{
+                  backgroundColor: "primary",
+                  borderRadius: 1,
+
+                  "& .MuiInputLabel-root": {
+                    color: "secondary",
+                  },
+
+                  "& .MuiInputLabel-root.Mui-focused": {
+                    color: "secondary",
+                  },
+
+                  "& .MuiOutlinedInput-input": {
+                    color: "secondary",
+                  },
+
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "primary",
+                  },
+
+                  "&:hover .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "primary",
+                  },
+
+                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                    {
+                      borderColor: "primary",
+                    },
+                }} />
+
+                <TextField id="courseName" label="Course Name" variant="outlined"
+                fullWidth
+                sx={{
+                  backgroundColor: "primary",
+                  borderRadius: 1,
+
+                  "& .MuiInputLabel-root": {
+                    color: "secondary",
+                  },
+
+                  "& .MuiInputLabel-root.Mui-focused": {
+                    color: "secondary",
+                  },
+
+                  "& .MuiOutlinedInput-input": {
+                    color: "secondary",
+                  },
+
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "primary",
+                  },
+
+                  "&:hover .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "primary",
+                  },
+
+                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                    {
+                      borderColor: "primary",
+                    },
+                }} />
+
+                <TextField id="room" label="Room" variant="outlined"
+                fullWidth
+                sx={{
+                  backgroundColor: "primary",
+                  borderRadius: 1,
+
+                  "& .MuiInputLabel-root": {
+                    color: "secondary",
+                  },
+
+                  "& .MuiInputLabel-root.Mui-focused": {
+                    color: "secondary",
+                  },
+
+                  "& .MuiOutlinedInput-input": {
+                    color: "secondary",
+                  },
+
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "primary",
+                  },
+
+                  "&:hover .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "primary",
+                  },
+
+                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                    {
+                      borderColor: "primary",
+                    },
+                }} />
+
+            
+
+            
 
                 <InputLabel id="daysOffered">Days Offered</InputLabel>
                   <Select
@@ -173,24 +365,99 @@ function Add_Course() {
                         <MenuItem value="7:00-9:30">7:00 PM to 9:30 PM</MenuItem>
                   </Select>
 
-            </FormGroup>
+            
 
-            <FormGroup>
+            
 
                 <TextField label="Credit Hours" id="creditHours" type="number" slotProps={{ htmlInput: { min: 1, max: 3 } }} />
                 <NumberField label="Credit Hours" id="creditHours" min={1} max={3} />
 
-                <TextField id="instuctorFirstName" label="Instructor First Name" variant="outlined" />
+                <TextField id="instuctorFirstName" label="Instructor First Name" variant="outlined"
+                fullWidth
+                sx={{
+                  backgroundColor: "primary",
+                  borderRadius: 1,
 
-                <TextField id="instructorLastName" label="Instructor Last Name" variant="outlined" />
+                  "& .MuiInputLabel-root": {
+                    color: "secondary",
+                  },
+
+                  "& .MuiInputLabel-root.Mui-focused": {
+                    color: "secondary",
+                  },
+
+                  "& .MuiOutlinedInput-input": {
+                    color: "secondary",
+                  },
+
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "primary",
+                  },
+
+                  "&:hover .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "primary",
+                  },
+
+                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                    {
+                      borderColor: "primary",
+                    },
+                }} />
+
+                <TextField id="instructorLastName" label="Instructor Last Name" variant="outlined"
+                fullWidth
+                sx={{
+                  backgroundColor: "primary",
+                  borderRadius: 1,
+
+                  "& .MuiInputLabel-root": {
+                    color: "secondary",
+                  },
+
+                  "& .MuiInputLabel-root.Mui-focused": {
+                    color: "secondary",
+                  },
+
+                  "& .MuiOutlinedInput-input": {
+                    color: "secondary",
+                  },
+
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "primary",
+                  },
+
+                  "&:hover .MuiOutlinedInput-notchedOutline": {
+                    borderColor: "primary",
+                  },
+
+                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                    {
+                      borderColor: "primary",
+                    },
+                }} />
 
                 <TextField label="Enrollment Cap" id="enrollmentCap" type="number" slotProps={{ htmlInput: { min: 1, max: 120 } }} />
                 <NumberField label="Enrollment Cap" id="enrollmentCap" min={1} max={120} />
 
-            </FormGroup>
+                
 
-                <Button variant="contained">Submit</Button>
+                <Button type="submit"
+                variant="contained"
+                size="large"
+                sx={{
+                  backgroundColor: "primary",
+                  color: "secondary",
+                  fontWeight: "bold",
 
-            </Box>
+                  "&:hover": {
+                    backgroundColor: "info",
+                  },
+                }}>Submit</Button>
+
+                </Box>
+                </Paper>
+                </Box>
+                </Box>
+            
       )
 }
