@@ -76,6 +76,7 @@ function Add_Course() {
                         <MenuItem value="Fall">Fall</MenuItem>
                   </Select>
 
+                <TextField label="Course Year" id="courseYear" type="number" slotProps={{ htmlInput: { min: 2008, max: 2050 } }} />
                 <NumberField label="Course Year" id="courseYear" min={2008} max={2050} />
                 
                 </FormGroup>
@@ -176,12 +177,14 @@ function Add_Course() {
 
             <FormGroup>
 
+                <TextField label="Credit Hours" id="creditHours" type="number" slotProps={{ htmlInput: { min: 1, max: 3 } }} />
                 <NumberField label="Credit Hours" id="creditHours" min={1} max={3} />
 
                 <TextField id="instuctorFirstName" label="Instructor First Name" variant="outlined" />
 
                 <TextField id="instructorLastName" label="Instructor Last Name" variant="outlined" />
 
+                <TextField label="Enrollment Cap" id="enrollmentCap" type="number" slotProps={{ htmlInput: { min: 1, max: 120 } }} />
                 <NumberField label="Enrollment Cap" id="enrollmentCap" min={1} max={120} />
 
             </FormGroup>
