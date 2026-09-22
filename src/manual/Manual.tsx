@@ -23,6 +23,7 @@ function UserManual() {
 
 function ProgrammerManual() {
       return (
+            <h1>User Manual mine</h1>
             <Box>
                   <Typography variant="h2">Programmer Manual</Typography>
             </Box>
