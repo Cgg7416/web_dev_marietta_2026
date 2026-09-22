@@ -5,6 +5,6 @@ import '../index.css';
 
 export default function Manual() {
       return (
-            <h1>User Manual</h1>
+            <h1>User Manual mine</h1>
       )
 }
