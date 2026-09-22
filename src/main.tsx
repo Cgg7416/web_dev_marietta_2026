@@ -13,7 +13,7 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import { MenuItem } from '@mui/material';
 import Link from "@mui/material/Link";
-import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 // Page imports
 import Home from "./Home.tsx";
@@ -23,7 +23,18 @@ import Drop_Course from "./course_management/Drop.tsx";
 import Student_Management from "./user_management/Students.tsx";
 import Instructor_Management from "./user_management/Instructors.tsx";
 import Manual from "./manual/Manual.tsx";
-import {lightMode, darkMode} from "./ColorThemes";
+
+const lightMode = createTheme({
+  palette: {
+    mode: 'light',
+  },
+});
+
+const darkMode = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
 
 const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
 
