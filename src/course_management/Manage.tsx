@@ -7,7 +7,6 @@ import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import NumberField from '../mui_material_components/NumberField';
 import Button from "@mui/material/Button";
-import FormGroup from "@mui/material/FormGroup";
 import { Typography, Paper } from '@mui/material';
 
 // Material Imports

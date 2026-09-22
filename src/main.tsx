@@ -135,6 +135,6 @@ function Footer() {
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App/>
-    <Button variant="contained" href="/manual" endIcon={<HelpIcon />} sx={{width:{xs: 1/4,sm:1/6}, height: {xs: 1/10, sm: 1/15}, position:"fixed",zIndex:"tooltip", right: 5, bottom: 5}}>Help</Button>
+    <Button variant="contained" color="primary" href="/manual" endIcon={<HelpIcon />} sx={{width:{xs: 1/4,sm:1/6}, height: {xs: 1/10, sm: 1/15}, position:"fixed",zIndex:"tooltip", right: 5, bottom: 5}}>Help</Button>
   </StrictMode>,
 )
