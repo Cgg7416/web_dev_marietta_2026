@@ -126,7 +126,7 @@ function Footer() {
           variant="body2"
           sx={{ color: "white" }}
         >
-          Group Members: Collin Gladen, Group Member 2, Group Member 3
+          Group Members: Collin Gladen, Ian Hufford, Claire Line
         </Typography>
       </Box>
   )
