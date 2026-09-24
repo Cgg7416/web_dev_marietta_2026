@@ -13,12 +13,8 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import { MenuItem } from '@mui/material';
 import Link from "@mui/material/Link";
-<<<<<<< HEAD
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-=======
 import Box from "@mui/material/Box";
-import { ThemeProvider} from '@mui/material/styles';
->>>>>>> upstream/master
 
 // Page imports
 import Home from "./Home.tsx";
