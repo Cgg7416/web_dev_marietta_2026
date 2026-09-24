@@ -138,7 +138,7 @@ function Footer() {
 function Header() {
   return (
     <>
-      <h1>Hello World</h1>
+      <Typography variant="h1" sx={{fontSize: {xs: 32, sm: 48, md: 72}, pb: 1}}>Course Registration System</Typography>
     </>
   )
 }

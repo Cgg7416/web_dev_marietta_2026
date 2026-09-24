@@ -1,6 +1,6 @@
 import '../index.css';
 import React from 'react';
-import {Box, Typography, Button, ButtonGroup, Accordion, Divider, AccordionSummary,AccordionDetails} from "@mui/material";
+import {Box, Typography, Button, ButtonGroup, Accordion, Divider, AccordionSummary,AccordionDetails, Card} from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 // Material Imports
@@ -18,6 +18,8 @@ export default function Manual() {
                         <Button onClick={() => setManual("programmer")}>Programmer Manual</Button>
                   </ButtonGroup>
 
+                  <Overview/>
+
                   <Divider></Divider>
                   
                   <Box>
@@ -32,7 +34,7 @@ function ManualIntroduction() {
       
       return(
             <Box>
-                  <Typography variant="h1" >Manuals</Typography>
+                  <Typography variant="h2" sx={{fontSize: {xs: 48, sm: 52, md: 72}}}>Manuals</Typography>
 
                   <br></br>
                   <Typography variant="body1">To navigate throughout this website use the bar at the top!</Typography>
@@ -100,11 +102,153 @@ function UserManual() {
       )
 }
 
+function Overview() {
+      return (
+            <Card sx={{m:4, mt:2, p:2, textAlign:"left"}}>
+                  <Typography variant="body1" sx={{fontWeight:"bold"}}>Overview </Typography>
+                  <Divider sx={{mb:2}}></Divider>
+                  <Typography variant="body2">This course registration system is designed to assist students and instructors in enrolling professors and students, adding or dropping classes, as well as managing course information. You will use the navigation menu on the top of the screen to move between pages. </Typography>
+                  <Typography variant="body2">It is built using the React framework (MUI Material) and it functions in modern browsers along with mobile. This site includes pages for enrolling students and instructors, registering and managing courses, and more. Each page contains forms with clearly labeled input elements. The React is stored internally and is kept simple to ensure user friendliness. Programmers are encouraged to keep things simple when making updates or changes to the system. </Typography>
+            </Card>
+      )
+}
+
 function ProgrammerManual() {
       return (
       
-            <Box>
-                  <Typography>Programmer Manual</Typography>
+            <Box sx={{textAlign:'left'}}>
+
+                  <Accordion>
+                        <AccordionSummary expandIcon={<ExpandMoreIcon/>}><Typography variant="body1" >Home Page</Typography></AccordionSummary>
+                        <AccordionDetails>
+                              <Typography variant="body1">The home page serves as a welcome screen. It features navigation buttons on the top of the screen and there are no form elements</Typography>
+                        </AccordionDetails>
+                  </Accordion>
+
+                  <Accordion>
+                        <AccordionSummary expandIcon={<ExpandMoreIcon/>}><Typography variant="body1">Drop Course Page</Typography></AccordionSummary>
+                        <AccordionDetails>
+                              <Typography variant="body1">The DropCourse page allows students to enter information to drop a course. It contains the standard header, navigation menu, form, and footer. Form Elements:</Typography>
+                              <ul>
+                                    <li>studentFirstName – Student first name</li>
+                                    <li>studentLastName – Student last name</li>
+                                    <li>semesterYear – Semester and year</li>
+                                    <li>coursePrefix – Course prefix</li>
+                                    <li>courseNumber – Course number</li>
+                                    <li>courseSection – Course section</li>
+                                    <li>Submit – Submits the form</li>
+                              </ul>
+                              <Typography variant="body1">Functions:</Typography>
+                              <ul>
+                                    <li>DropCourse() – Displays the Drop Course page.</li>
+                                    <li>onSubmit – Prevents the default form submission.</li>
+                              </ul>
+                        </AccordionDetails>
+                  </Accordion>
+
+                  <Accordion>
+                        <AccordionSummary expandIcon={<ExpandMoreIcon/>}><Typography variant="body1">Course Management Page</Typography></AccordionSummary>
+                        <AccordionDetails>
+                              <Typography variant="body1">The Course_Management page allows users to enter information needed to create and manage a course. It contains the standard header, navigation menu, form, and footer. Form Elements:</Typography>
+
+                              <ul>
+                                    <li>semester_select – Semester</li>
+                                    <li>courseYear – Course year</li>
+                                    <li>coursePrefix – Course prefix</li>
+                                    <li>courseNumber – Course number</li>
+                                    <li>courseSection – Course section</li>
+                                    <li>courseName – Course name</li>
+                                    <li>room – Classroom</li>
+                                    <li>daysOfferedSelect – Days the course meets</li>
+                                    <li>timeMWFSelect – MWF class time</li>
+                                    <li>timeMWSelect – MW class time</li>
+                                    <li>timeTTHSelect – T/Th class time</li>
+                                    <li>timeSingleDaySelect – Single-day class time</li>
+                                    <li>creditHours – Credit hours</li>
+                                    <li>InstructorFirstName – Instructor first name</li>
+                                    <li>instructorLastName – Instructor last name</li>
+                                    <li>enrollmentCap – Maximum enrollment</li>
+                                    <li>Submit – Submits the form</li>
+                              </ul>
+
+                              <Typography variant="body1">Functions:</Typography>
+
+                              <ul>
+                                    <li>Course_Management() – Displays the Course Management page.</li>
+                                    <li>No additional form-processing functions are currently implemented.</li>
+                              </ul>
+                        </AccordionDetails>
+                  </Accordion>
+
+                  <Accordion>
+                        <AccordionSummary expandIcon={<ExpandMoreIcon/>}><Typography variant="body1">Register Course Page</Typography></AccordionSummary>
+                        <AccordionDetails>
+                              <Typography variant="body1">The RegisterCourse page allows students to enter information needed to register for a course. It contains the standard header, navigation menu, form, and footer. Form Elements:</Typography>
+
+                              <ul>
+                                    <li>studentFirstName – Student first name</li>
+                                    <li>studentLastName – Student last name</li>
+                                    <li>semesterYear – Semester and year</li>
+                                    <li>coursePrefix – Course prefix</li>
+                                    <li>courseNumber – Course number</li>
+                                    <li>courseSection – Course section</li>
+                                    <li>Submit – Submits the form</li>
+                              </ul>
+                              <Typography variant="body1">Functions:</Typography>
+                              <ul>
+                                    <li>RegisterCourse() – Displays the Register Course page.</li>
+                                    <li>No additional form-processing functions are currently implemented.</li>
+                              </ul>
+                        </AccordionDetails>
+                  </Accordion>
+
+                  <Accordion>
+                        <AccordionSummary expandIcon={<ExpandMoreIcon/>}><Typography variant="body1">Add Instructor Page</Typography></AccordionSummary>
+                        <AccordionDetails>
+                              <Typography variant="body1">The AddInstructor page allows users to enter information for a new instructor. It contains the standard header, navigation menu, form, and footer. Form Elements:</Typography>
+
+                              <ul>
+                                    <li>instructorFirstName – Instructor first name</li>
+                                    <li>instructorLastName – Instructor last name</li>
+                                    <li>instructorDepartment – Instructor department</li>
+                                    <li>instructorRank – Instructor rank</li>
+                                    <li>instructorEmail – Instructor email address</li>
+                                    <li>Submit – Submits the form</li>
+                              </ul>
+
+                              <Typography variant="body1">Functions:</Typography>
+
+                              <ul>
+                                    <li>AddInstructor() – Displays the Add Instructor page.</li>
+                                    <li>No additional form-processing functions are currently implemented.</li>
+                              </ul>
+
+                        </AccordionDetails>
+                  </Accordion>
+
+                  <Accordion>
+                        <AccordionSummary expandIcon={<ExpandMoreIcon/>}><Typography variant="body1">Enroll Student Page</Typography></AccordionSummary>
+                        <AccordionDetails>
+                              <Typography variant="body1">The EnrollStudent page allows users to enter information for a new student. It contains the standard header, navigation menu, form, and footer. Form Elements:</Typography>
+
+                              <ul>
+                                    <li>studentFirstName – Student first name</li>
+                                    <li>studentLastName – Student last name</li>
+                                    <li>studentYear – Student year</li>
+                                    <li>studentMajor – Student major</li>
+                                    <li>studentEmail – Student email address</li>
+                                    <li>Submit – Submits the form</li>
+                              </ul>
+
+                              <Typography variant="body1">Functions:</Typography>
+
+                              <ul>
+                                    <li>EnrollStudent() – Displays the Enroll Student page.</li>
+                                    <li>No additional form-processing functions are currently implemented.</li>
+                              </ul>
+                        </AccordionDetails>
+                  </Accordion>
+
             </Box>
       )
 }
