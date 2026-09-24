@@ -13,7 +13,12 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import { MenuItem } from '@mui/material';
 import Link from "@mui/material/Link";
+<<<<<<< HEAD
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+=======
+import Box from "@mui/material/Box";
+import { ThemeProvider} from '@mui/material/styles';
+>>>>>>> upstream/master
 
 // Page imports
 import Home from "./Home.tsx";
@@ -58,6 +63,9 @@ function App() {
   return (
     <ThemeProvider theme={isDarkMode?darkMode:lightMode}>
     <BrowserRouter>
+
+      <Header/>
+      
       <AppBar position="static" className="Navbar" sx={{width:1}}>
         
         <Desktop_App_Bar/>
@@ -101,6 +109,8 @@ function App() {
         <Route path='/drop' element={<Drop_Course />} />
         <Route path="/manual" element={<Manual />}/>
       </Routes>
+
+      <Footer />
     </BrowserRouter>
     </ThemeProvider>
   )
@@ -119,9 +129,38 @@ function Desktop_App_Bar() {
   )
 }
 
+function Footer() {
+  return(
+      <Box
+        component="footer"
+        sx={{
+          padding: 2,
+          textAlign: "center",
+          backgroundColor: "#1e1e1e",
+          color: "white",
+        }}
+      >
+        <Typography
+          variant="body2"
+          sx={{ color: "white" }}
+        >
+          Group Members: Collin Gladen, Ian Hufford, Claire Line
+        </Typography>
+      </Box>
+  )
+}
+
+function Header() {
+  return (
+    <>
+      <Typography variant="h1" sx={{fontSize: {xs: 32, sm: 48, md: 72}, pb: 1}}>Course Registration System</Typography>
+    </>
+  )
+}
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App/>
-    <Button variant="contained" href="/manual" endIcon={<HelpIcon />} sx={{width:{xs: 1/4,sm:1/6}, height: {xs: 1/10, sm: 1/15}, position:"fixed",zIndex:"tooltip", right: 5, bottom: 5}}>Help</Button>
+    <Button variant="contained" color="primary" href="/manual" endIcon={<HelpIcon />} sx={{width:{xs: 1/4,sm:1/6}, height: {xs: 1/10, sm: 1/15}, position:"fixed",zIndex:"tooltip", right: 5, bottom: 5}}>Help</Button>
   </StrictMode>,
 )

@@ -1,4 +1,4 @@
-import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import { createTheme} from '@mui/material/styles';
 
 // Imported theme from MUI Pallette Generator
 export const lightMode = createTheme({
