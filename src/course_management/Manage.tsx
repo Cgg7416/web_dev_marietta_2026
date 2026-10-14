@@ -8,6 +8,12 @@ import InputLabel from "@mui/material/InputLabel";
 import NumberField from '../mui_material_components/NumberField';
 import Button from "@mui/material/Button";
 import { Typography, Paper } from '@mui/material';
+import type { NumberFieldRootChangeEventDetails } from '@base-ui/react/number-field';
+import { DateField } from '@mui/x-date-pickers/DateField';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import dayjs, { Dayjs } from 'dayjs';
 
 // Material Imports
 //import Stack from '@mui/material/Stack';
@@ -25,11 +31,42 @@ export default function Course_Management() {
 function Add_Course() {
 
       const [semester, setSemester] = React.useState('');
+      const [courseYear, setCourseYear] = React.useState<Dayjs | null>(dayjs('2026'));
+      const [coursePrefix, setCoursePrefix] = React.useState('');
+      const [courseNumber, setCourseNumber] = React.useState('');
+      const [courseSection, setCourseSection] = React.useState('');
+      const [courseName, setCourseName] = React.useState('');
+      const [room, setRoom] = React.useState('');
+      const [creditHours, setCreditHours] = React.useState(0);
       const [daytime, setDayTime] = React.useState('');
       const [mwfTime, setMWFTime] = React.useState('');
       const [mwTime, setMWTime] = React.useState('');
       const [tthTime, setTTHTime] = React.useState('');
       const [singleDayTime, setSingleDayTime] = React.useState('');
+
+      const handleCoursePrefixChange = (event : React.ChangeEvent<HTMLInputElement>) => {
+        setCoursePrefix(event.target.value);
+      }
+
+      const handleCourseNumberChange = (event : React.ChangeEvent<HTMLInputElement>) => {
+        setCourseNumber(event.target.value);
+      }
+
+      const handleCourseSectionChange = (event : React.ChangeEvent<HTMLInputElement>) => {
+        setCourseSection(event.target.value);
+      }
+
+      const handleCourseNameChange = (event : React.ChangeEvent<HTMLInputElement>) => {
+        setCourseName(event.target.value);
+      }
+
+      const handleRoomChange = (event : React.ChangeEvent<HTMLInputElement>) => {
+        setRoom(event.target.value);
+      }
+
+      const handleCreditHourChange = (event : React.ChangeEvent<HTMLInputElement>) => {
+        setRoom(event.target.value);
+      }
 
       const handleSemesterChange = (event: SelectChangeEvent) => {
             setSemester(event.target.value);
@@ -65,7 +102,7 @@ function Add_Course() {
         color: "primary",
       }}
     >
-        {/* Add Instructor Form */}
+        {/* Add Course */}
         <Box
           component="main"
           sx={{
@@ -117,10 +154,20 @@ function Add_Course() {
                         <MenuItem value="Fall">Fall</MenuItem>
                   </Select>
 
-                <NumberField label="Course Year" id="courseYear" min={2026} max={2050} />
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DatePicker label="Course Year" 
+                    value={courseYear}
+                    views={['year']}
+                    format="YYYY"
+                    minDate={dayjs("2026")}
+                    maxDate={dayjs("2032")}
+                    onChange={(newValue) => setCourseYear(newValue)}
+                    slotProps={{desktopPaper:{sx:{maxHeight:"100px"}}}}/>
+                </LocalizationProvider>
             
                 <TextField id="coursePrefix" label="Course Prefix" variant="outlined"
                 fullWidth
+                onChange={handleCoursePrefixChange}
                 sx={{
                   backgroundColor: "primary",
                   borderRadius: 1,
@@ -153,6 +200,7 @@ function Add_Course() {
 
                 <TextField id="courseNumber" label="Course Number" variant="outlined"
                 fullWidth
+                onChange={handleCourseNumberChange}
                 sx={{
                   backgroundColor: "primary",
                   borderRadius: 1,
@@ -185,6 +233,7 @@ function Add_Course() {
 
                 <TextField id="courseSection" label="Course Section" variant="outlined"
                 fullWidth
+                onChange={handleCourseSectionChange}
                 sx={{
                   backgroundColor: "primary",
                   borderRadius: 1,
@@ -217,6 +266,7 @@ function Add_Course() {
 
                 <TextField id="courseName" label="Course Name" variant="outlined"
                 fullWidth
+                onChange={handleCourseNameChange}
                 sx={{
                   backgroundColor: "primary",
                   borderRadius: 1,
@@ -249,6 +299,7 @@ function Add_Course() {
 
                 <TextField id="room" label="Room" variant="outlined"
                 fullWidth
+                onChange={handleRoomChange}
                 sx={{
                   backgroundColor: "primary",
                   borderRadius: 1,
@@ -370,7 +421,7 @@ function Add_Course() {
 
                     </>}
 
-                <NumberField label="Credit Hours" id="creditHours" min={1} max={3} />
+                <NumberField label="Credit Hours" id="creditHours" min={1} max={3}/>
 
                 <TextField id="instuctorFirstName" label="Instructor First Name" variant="outlined"
                 fullWidth
@@ -441,7 +492,8 @@ function Add_Course() {
 
                 
 
-                <Button type="submit"
+                <Button 
+                type="submit"
                 variant="contained"
                 size="large"
                 sx={{
