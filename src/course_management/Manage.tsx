@@ -117,7 +117,7 @@ function Add_Course() {
                         <MenuItem value="Fall">Fall</MenuItem>
                   </Select>
 
-                <NumberField label="Course Year" id="courseYear" min={2008} max={2050} />
+                <NumberField label="Course Year" id="courseYear" min={2026} max={2050} />
             
                 <TextField id="coursePrefix" label="Course Prefix" variant="outlined"
                 fullWidth
@@ -297,65 +297,78 @@ function Add_Course() {
                         <MenuItem value="Thursday">Thursday</MenuItem>
                   </Select>
 
-                  <InputLabel id="timeMWF">Monday, Wednesday, Friday</InputLabel>
-                  <Select
-                        labelId="timeMWF"
-                        id="timeMWFSelect"
-                        value={mwfTime}
-                        label="Monday, Wednesday, Friday"
-                        onChange={handleMWFTimeChange}
-                  >
-                        <MenuItem value="8:00-8:50">8:00 AM to 8:50 AM</MenuItem>
-                        <MenuItem value="9:00-9:50">9:00 AM to 9:50 AM</MenuItem>
-                        <MenuItem value="10:00-10:50">10:00 AM to 10:50 AM</MenuItem>
-                        <MenuItem value="11:00-11:50">11:00 AM to 11:50 AM</MenuItem>
-                        <MenuItem value="12:00-12:50">12:00 PM to 12:50 PM</MenuItem>
-                        <MenuItem value="1:00-1:50">1:00 PM to 1:50 PM</MenuItem>
-                        <MenuItem value="2:00-2:50">2:00 PM to 2:50 PM</MenuItem>
-                        <MenuItem value="3:00-3:50">3:00 PM to 3:50 PM</MenuItem>
-                  </Select>
+                  {(daytime == "MWF") &&
+                  <>
+                    <InputLabel id="timeMWF">Monday, Wednesday, Friday</InputLabel>
+                    <Select
+                          labelId="timeMWF"
+                          id="timeMWFSelect"
+                          value={mwfTime}
+                          label="Monday, Wednesday, Friday"
+                          onChange={handleMWFTimeChange}
+                    >
+                          <MenuItem value="8:00-8:50">8:00 AM to 8:50 AM</MenuItem>
+                          <MenuItem value="9:00-9:50">9:00 AM to 9:50 AM</MenuItem>
+                          <MenuItem value="10:00-10:50">10:00 AM to 10:50 AM</MenuItem>
+                          <MenuItem value="11:00-11:50">11:00 AM to 11:50 AM</MenuItem>
+                          <MenuItem value="12:00-12:50">12:00 PM to 12:50 PM</MenuItem>
+                          <MenuItem value="1:00-1:50">1:00 PM to 1:50 PM</MenuItem>
+                          <MenuItem value="2:00-2:50">2:00 PM to 2:50 PM</MenuItem>
+                          <MenuItem value="3:00-3:50">3:00 PM to 3:50 PM</MenuItem>
+                    </Select>
+                  </>
+                  } 
+                {(daytime == "MW") &&
+                  <>
+                    <InputLabel id="timeMW">Monday, Wednesday</InputLabel>
+                      <Select
+                            labelId="timeMW"
+                            id="timeMWSelect"
+                            value={mwTime}
+                            label="Monday, Wednesday, Friday"
+                            onChange={handleMWTimeChange}
+                      >
+                            <MenuItem value="9:00-10:50">9:00 AM to 10:50 AM</MenuItem>
+                            <MenuItem value="1:00-2:15">1:00 PM to 2:15 PM</MenuItem>
+                            <MenuItem value="1:00-2:50">1:00 PM to 2:50 PM</MenuItem>
+                            <MenuItem value="2:00-3:15">2:00 PM to 3:15 PM</MenuItem>
+                      </Select>
+                    </> 
+                    }
 
-                <InputLabel id="timeMWF">Monday, Wednesday</InputLabel>
-                  <Select
-                        labelId="timeMW"
-                        id="timeMWSelect"
-                        value={mwTime}
-                        label="Monday, Wednesday, Friday"
-                        onChange={handleMWTimeChange}
-                  >
-                        <MenuItem value="9:00-10:50">9:00 AM to 10:50 AM</MenuItem>
-                        <MenuItem value="1:00-2:15">1:00 PM to 2:15 PM</MenuItem>
-                        <MenuItem value="1:00-2:50">1:00 PM to 2:50 PM</MenuItem>
-                        <MenuItem value="2:00-3:15">2:00 PM to 3:15 PM</MenuItem>
-                  </Select>
+                    {(daytime == "TR") && <>
+                      <InputLabel id="timeTTH">Tuesday, Thursday</InputLabel>
+                        <Select
+                              labelId="timeTTH"
+                              id="timeTTHSelect"
+                              value={tthTime}
+                              label="Tuesday, Thursday"
+                              onChange={handleTTHTimeChange}
+                        >
+                              <MenuItem value="8:00-9:15">8:00 AM to 9:15 AM</MenuItem>
+                              <MenuItem value="9:30-10:45">9:30 AM to 10:45 AM</MenuItem>
+                              <MenuItem value="11:00-12:15">11:00 AM to 12:15 PM</MenuItem>
+                              <MenuItem value="1:00-2:15">1:00 PM to 2:15 PM</MenuItem>
+                              <MenuItem value="2:30-3:45">2:30 PM to 3:45 PM</MenuItem>
+                        </Select>
+                    </>}
 
-                <InputLabel id="timeTTH">Tuesday, Thursday</InputLabel>
-                  <Select
-                        labelId="timeTTH"
-                        id="timeTTHSelect"
-                        value={tthTime}
-                        label="Tuesday, Thursday"
-                        onChange={handleTTHTimeChange}
-                  >
-                        <MenuItem value="8:00-9:15">8:00 AM to 9:15 AM</MenuItem>
-                        <MenuItem value="9:30-10:45">9:30 AM to 10:45 AM</MenuItem>
-                        <MenuItem value="11:00-12:15">11:00 AM to 12:15 PM</MenuItem>
-                        <MenuItem value="1:00-2:15">1:00 PM to 2:15 PM</MenuItem>
-                        <MenuItem value="2:30-3:45">2:30 PM to 3:45 PM</MenuItem>
-                  </Select>
+                    {(daytime == "Monday" || daytime == "Tuesday" || daytime == "Wednesday" || daytime == "Thursday") && <>
+                    
+                      <InputLabel id="timeSingleDay">Single Day</InputLabel>
+                        <Select
+                              labelId="timeSingleDay"
+                              id="timeSingleDaySelect"
+                              value={singleDayTime}
+                              label="Tuesday, Thursday"
+                              onChange={handleSingleDayTimeChange}
+                        >
+                              <MenuItem value="1:00-4:00">1:00 PM to 4:00 PM</MenuItem>
+                              <MenuItem value="2:00-5:00">2:00 PM to 5:00 PM</MenuItem>
+                              <MenuItem value="7:00-9:30">7:00 PM to 9:30 PM</MenuItem>
+                        </Select>
 
-                <InputLabel id="timeSingleDay">Single Day</InputLabel>
-                  <Select
-                        labelId="timeSingleDay"
-                        id="timeSingleDaySelect"
-                        value={singleDayTime}
-                        label="Tuesday, Thursday"
-                        onChange={handleSingleDayTimeChange}
-                  >
-                        <MenuItem value="1:00-4:00">1:00 PM to 4:00 PM</MenuItem>
-                        <MenuItem value="2:00-5:00">2:00 PM to 5:00 PM</MenuItem>
-                        <MenuItem value="7:00-9:30">7:00 PM to 9:30 PM</MenuItem>
-                  </Select>
+                    </>}
 
                 <NumberField label="Credit Hours" id="creditHours" min={1} max={3} />
 
