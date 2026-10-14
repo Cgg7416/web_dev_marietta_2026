@@ -20,6 +20,7 @@ import dayjs, { Dayjs } from 'dayjs';
 
 export default function Course_Management() {
       return (
+    
             <>
 
             <Add_Course/>
@@ -30,19 +31,20 @@ export default function Course_Management() {
 
 function Add_Course() {
 
-      const [semester, setSemester] = React.useState('');
-      const [courseYear, setCourseYear] = React.useState<Dayjs | null>(dayjs('2026'));
-      const [coursePrefix, setCoursePrefix] = React.useState('');
-      const [courseNumber, setCourseNumber] = React.useState('');
-      const [courseSection, setCourseSection] = React.useState('');
-      const [courseName, setCourseName] = React.useState('');
-      const [room, setRoom] = React.useState('');
-      const [creditHours, setCreditHours] = React.useState(0);
-      const [daytime, setDayTime] = React.useState('');
-      const [mwfTime, setMWFTime] = React.useState('');
-      const [mwTime, setMWTime] = React.useState('');
-      const [tthTime, setTTHTime] = React.useState('');
-      const [singleDayTime, setSingleDayTime] = React.useState('');
+  var creditHours = 0;
+
+  const [semester, setSemester] = React.useState('');
+  const [courseYear, setCourseYear] = React.useState<Dayjs | null>(dayjs('2026'));
+  const [coursePrefix, setCoursePrefix] = React.useState('');
+  const [courseNumber, setCourseNumber] = React.useState('');
+  const [courseSection, setCourseSection] = React.useState('');
+  const [courseName, setCourseName] = React.useState('');
+  const [room, setRoom] = React.useState('');
+  const [daytime, setDayTime] = React.useState('');
+  const [mwfTime, setMWFTime] = React.useState('');
+  const [mwTime, setMWTime] = React.useState('');
+  const [tthTime, setTTHTime] = React.useState('');
+  const [singleDayTime, setSingleDayTime] = React.useState('');
 
       const handleCoursePrefixChange = (event : React.ChangeEvent<HTMLInputElement>) => {
         setCoursePrefix(event.target.value);
@@ -61,10 +63,6 @@ function Add_Course() {
       }
 
       const handleRoomChange = (event : React.ChangeEvent<HTMLInputElement>) => {
-        setRoom(event.target.value);
-      }
-
-      const handleCreditHourChange = (event : React.ChangeEvent<HTMLInputElement>) => {
         setRoom(event.target.value);
       }
 
