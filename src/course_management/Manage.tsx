@@ -85,7 +85,9 @@ function Add_Course() {
   // Event Changes
   const handleInstructorFirstNameChange = (event : React.ChangeEvent<HTMLInputElement>) => {
 
-      if (event.target.value.includes("-/&*$%^#()><?![]{};:123456789")) {
+    const regex = new RegExp("^[A-Z,a-z,-,']+$");
+
+      if (regex.test(event.target.value)) {
         setInstructorFirstNameIsValid(false);
       } else if (event.target.value == null) {
         setInstructorFirstNameIsValid(true);
@@ -96,7 +98,10 @@ function Add_Course() {
     }
 
     const handleInstructorLastNameChange = (event : React.ChangeEvent<HTMLInputElement>) => {
-      if (event.target.value.includes("-/&*$%^#()><?![]{};:123456789")) {
+
+      const regex = new RegExp("^[A-Z,a-z,-,']+$");
+
+      if (regex.test(event.target.value)) {
           setInstructorLastNameIsValid(false)
       } else if (event.target.value == null) {
         setInstructorLastNameIsValid(true)
@@ -113,7 +118,7 @@ function Add_Course() {
         if (regex.test(event.target.value)) {
           setCoursePrefixIsValid(false);
         } else if (event.target.value == null) {
-        setCoursePrefixIsValid(false);
+        setCoursePrefixIsValid(true);
       }else {
           setCoursePrefixIsValid(true);
           setCoursePrefix(event.target.value);
@@ -128,7 +133,7 @@ function Add_Course() {
           setCourseSectionIsValid(true);
           setCourseSection(event.target.value);
         } else if (event.target.value == null) {
-          setCourseSectionIsValid(true);
+          setCourseSectionIsValid(false);
          } else {
           setCourseSectionIsValid(false);
         }
