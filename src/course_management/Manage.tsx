@@ -8,15 +8,16 @@ import InputLabel from "@mui/material/InputLabel";
 import NumberField from '../mui_material_components/NumberField';
 import Button from "@mui/material/Button";
 import { Typography, Paper } from '@mui/material';
-import type { NumberFieldRootChangeEventDetails } from '@base-ui/react/number-field';
-import { DateField } from '@mui/x-date-pickers/DateField';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs, { Dayjs } from 'dayjs';
+import Alert from '@mui/material/Alert';
 
 // Material Imports
 //import Stack from '@mui/material/Stack';
+
+
 
 export default function Course_Management() {
       return (
@@ -31,31 +32,106 @@ export default function Course_Management() {
 
 function Add_Course() {
 
-  var creditHours = 0;
+  // Define check booleans
+  var [coursePrefixIsValid, setCoursePrefixIsValid] = React.useState(true);
+  var [courseSectionIsValid, setCourseSectionIsValid] = React.useState(true);
+  var [instructorFirstNameIsValid, setInstructorFirstNameIsValid] = React.useState(true);
+  var [instructorLastNameIsValid, setInstructorLastNameIsValid] = React.useState(true);
 
+  // Form input pull
+
+  function gatherFormInput() {
+    var submitted_semester = semester;
+    var submitted_courseYear = courseYear;
+    var submitted_coursePrefix = coursePrefix;
+    var submitted_courseNumber = courseNumber;
+    var submitted_courseSection = courseSection;
+    var submitted_courseName = courseName;
+    var submitted_room = room;
+    var submitted_daytime = daytime;
+    if (submitted_daytime == "MWF") {
+      var submitted_courseTime = mwfTime;
+    } else if (submitted_daytime == "MW") {
+      var submitted_courseTime = mwTime;
+    } else if (submitted_daytime == "TR") {
+      var submitted_courseTime = tthTime;
+    } else {
+      var submitted_courseTime = singleDayTime;
+    }
+    var submitted_creditHours = creditHours;
+    var submtted_enrollmentCap = enrollmentCap;
+    var submitted_instructorFirstName = instuctorFirstName;
+    var submitted_instructorLastName = instructorLastName;
+  }
+
+  // React Use States
   const [semester, setSemester] = React.useState('');
   const [courseYear, setCourseYear] = React.useState<Dayjs | null>(dayjs('2026'));
   const [coursePrefix, setCoursePrefix] = React.useState('');
-  const [courseNumber, setCourseNumber] = React.useState('');
+  const [courseNumber, setCourseNumber] = React.useState(100);
   const [courseSection, setCourseSection] = React.useState('');
   const [courseName, setCourseName] = React.useState('');
   const [room, setRoom] = React.useState('');
+  const [creditHours, setCreditHours] = React.useState(1);
   const [daytime, setDayTime] = React.useState('');
   const [mwfTime, setMWFTime] = React.useState('');
   const [mwTime, setMWTime] = React.useState('');
   const [tthTime, setTTHTime] = React.useState('');
   const [singleDayTime, setSingleDayTime] = React.useState('');
+  const [enrollmentCap,setEnrollmentCap] = React.useState(30);
+  const [instuctorFirstName, setInstructorFirstName] = React.useState('');
+  const [instructorLastName, setInstructorLastName] = React.useState('');
 
-      const handleCoursePrefixChange = (event : React.ChangeEvent<HTMLInputElement>) => {
-        setCoursePrefix(event.target.value);
+  // Event Changes
+  const handleInstructorFirstNameChange = (event : React.ChangeEvent<HTMLInputElement>) => {
+
+      if (event.target.value.includes("-/&*$%^#()><?![]{};:123456789")) {
+        setInstructorFirstNameIsValid(false);
+      } else if (event.target.value == null) {
+        setInstructorFirstNameIsValid(true);
+      }else {
+        setInstructorFirstNameIsValid(true);
+        setInstructorFirstName(event.target.value);
+      }
+    }
+
+    const handleInstructorLastNameChange = (event : React.ChangeEvent<HTMLInputElement>) => {
+      if (event.target.value.includes("-/&*$%^#()><?![]{};:123456789")) {
+          setInstructorLastNameIsValid(false)
+      } else if (event.target.value == null) {
+        setInstructorLastNameIsValid(true)
+      }else {
+        setInstructorLastNameIsValid(true)
+        setInstructorLastName(event.target.value);
+      }
       }
 
-      const handleCourseNumberChange = (event : React.ChangeEvent<HTMLInputElement>) => {
-        setCourseNumber(event.target.value);
+      const handleCoursePrefixChange = (event : React.ChangeEvent<HTMLInputElement>) => {
+
+        const regex = new RegExp('^[A-Z]{3,4}$');
+
+        if (regex.test(event.target.value)) {
+          setCoursePrefixIsValid(false);
+        } else if (event.target.value == null) {
+        setCoursePrefixIsValid(false);
+      }else {
+          setCoursePrefixIsValid(true);
+          setCoursePrefix(event.target.value);
+        }
       }
 
       const handleCourseSectionChange = (event : React.ChangeEvent<HTMLInputElement>) => {
-        setCourseSection(event.target.value);
+
+        const regex = new RegExp("^\d{2}$");
+
+        if (regex.test(event.target.value)) {
+          setCourseSectionIsValid(true);
+          setCourseSection(event.target.value);
+        } else if (event.target.value == null) {
+          setCourseSectionIsValid(true);
+         } else {
+          setCourseSectionIsValid(false);
+        }
       }
 
       const handleCourseNameChange = (event : React.ChangeEvent<HTMLInputElement>) => {
@@ -194,9 +270,14 @@ function Add_Course() {
                     {
                       borderColor: "primary",
                     },
-                }} />
+                }} 
+                />
 
-                <TextField id="courseNumber" label="Course Number" variant="outlined"
+                {coursePrefixIsValid && (<Alert severity="error">Your entered course prefix is invalid; please enter a sequence of 3-4 capital letters</Alert>)}
+
+                <NumberField label="Course Number" id="courseNumber" min={1} max={3} value={courseNumber} onValueChange={(value) => {setCourseNumber(value??100)}}/>
+
+                {/* <TextField id="courseNumber" label="Course Number" variant="outlined"
                 fullWidth
                 onChange={handleCourseNumberChange}
                 sx={{
@@ -227,7 +308,7 @@ function Add_Course() {
                     {
                       borderColor: "primary",
                     },
-                }} />
+                }} /> */}
 
                 <TextField id="courseSection" label="Course Section" variant="outlined"
                 fullWidth
@@ -261,6 +342,8 @@ function Add_Course() {
                       borderColor: "primary",
                     },
                 }} />
+
+                {courseSectionIsValid && (<Alert severity="error">Your entered course section is invalid; please enter exactly 2 digits</Alert>)}
 
                 <TextField id="courseName" label="Course Name" variant="outlined"
                 fullWidth
@@ -419,10 +502,11 @@ function Add_Course() {
 
                     </>}
 
-                <NumberField label="Credit Hours" id="creditHours" min={1} max={3}/>
+                <NumberField label="Credit Hours" id="creditHours" min={1} max={4} value={creditHours} onValueChange={(value) => {setCreditHours(value??1)}}/>
 
                 <TextField id="instuctorFirstName" label="Instructor First Name" variant="outlined"
                 fullWidth
+                onChange={handleInstructorFirstNameChange}
                 sx={{
                   backgroundColor: "primary",
                   borderRadius: 1,
@@ -452,9 +536,12 @@ function Add_Course() {
                       borderColor: "primary",
                     },
                 }} />
+
+                {instructorFirstNameIsValid && (<Alert severity="error">Your entered value for instructor first name is invalid</Alert>)}
 
                 <TextField id="instructorLastName" label="Instructor Last Name" variant="outlined"
                 fullWidth
+                onChange={handleInstructorLastNameChange}
                 sx={{
                   backgroundColor: "primary",
                   borderRadius: 1,
@@ -485,23 +572,26 @@ function Add_Course() {
                     },
                 }} />
 
+                {instructorLastNameIsValid && (<Alert severity="error">Your entered value for instructor last name is invalid</Alert>)}
+
                 
-                <NumberField label="Enrollment Cap" id="enrollmentCap" min={1} max={120} />
+                <NumberField label="Enrollment Cap" id="enrollmentCap" min={1} max={99} value={enrollmentCap} onValueChange={(value) => {setEnrollmentCap(value??30)}}/>
 
                 
 
                 <Button 
-                type="submit"
-                variant="contained"
-                size="large"
-                sx={{
-                  backgroundColor: "primary",
-                  color: "secondary",
-                  fontWeight: "bold",
+                  type="submit"
+                  variant="contained"
+                  size="large"
+                  onSubmit={gatherFormInput}
+                  sx={{
+                    backgroundColor: "primary",
+                    color: "secondary",
+                    fontWeight: "bold",
 
-                  "&:hover": {
-                    backgroundColor: "info",
-                  },
+                    "&:hover": {
+                      backgroundColor: "info",
+                    },
                 }}>Submit</Button>
 
                 </Box>
@@ -511,3 +601,5 @@ function Add_Course() {
             
       )
 }
+
+
