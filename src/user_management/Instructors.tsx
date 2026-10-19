@@ -1,3 +1,4 @@
+
 import {
   Typography,
   Box,
@@ -9,11 +10,19 @@ import {
   Select,
   MenuItem,
 } from "@mui/material";
+import type { FormEvent } from "react";
 
-function AddInstructor() {
+function validateInstructorForm(event: FormEvent<HTMLFormElement>) {
+  event.preventDefault();
+
+  if (!event.currentTarget.checkValidity()) {
+    event.currentTarget.reportValidity();
+  }
+}
+
+function Instructors() {
   return (
     <Box
-      color="primary"
       sx={{
         display: "flex",
         minHeight: "100vh",
@@ -22,279 +31,243 @@ function AddInstructor() {
         color: "primary",
       }}
     >
-        {/* Add Instructor Form */}
-        <Box
-          color="secondary"
-          component="main"
+      {/* Add Instructor Form */}
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          padding: 4,
+        }}
+      >
+        <Paper
+          elevation={3}
           sx={{
-            flexGrow: 1,
             padding: 4,
+            maxWidth: 600,
+            margin: "0 auto",
           }}
         >
-          <Paper
-            elevation={3}
-            color="primary"
+          <Typography
+            variant="h4"
+            color="textPrimary"
+            component="h1"
+            gutterBottom
+          >
+            Add Instructor
+          </Typography>
+
+          <Box
+            component="form"
+            onSubmit={validateInstructorForm}
+            noValidate
             sx={{
-              padding: 4,
-              maxWidth: 600,
-              margin: "0 auto",
+              display: "flex",
+              flexDirection: "column",
+              gap: 2,
             }}
           >
-            <Typography
-              variant="h4"
-              color="textPrimary"
-              component="h1"
-              gutterBottom
-            >
-              Add Instructor
-            </Typography>
-
-            <Box
-              component="form"
+            {/* Instructor First Name */}
+            <TextField
+              label="Instructor First Name"
+              id="instructorFirstName"
+              variant="outlined"
+              fullWidth
+              required
               sx={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 2,
+                backgroundColor: "primary",
+                borderRadius: 1,
+                "& .MuiInputLabel-root": {
+                  color: "secondary",
+                },
+                "& .MuiInputLabel-root.Mui-focused": {
+                  color: "secondary",
+                },
+                "& .MuiOutlinedInput-input": {
+                  color: "secondary",
+                },
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "primary",
+                },
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "primary",
+                },
+                "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "primary",
+                },
+              }}
+            />
+
+            {/* Instructor Last Name */}
+            <TextField
+              label="Instructor Last Name"
+              id="instructorLastName"
+              variant="outlined"
+              fullWidth
+              required
+              sx={{
+                backgroundColor: "primary",
+                borderRadius: 1,
+                "& .MuiInputLabel-root": {
+                  color: "secondary",
+                },
+                "& .MuiInputLabel-root.Mui-focused": {
+                  color: "secondary",
+                },
+                "& .MuiOutlinedInput-input": {
+                  color: "secondary",
+                },
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "primary",
+                },
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "primary",
+                },
+                "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "primary",
+                },
+              }}
+            />
+
+            {/* Instructor Department (Optional) */}
+            <TextField
+              label="Instructor Department"
+              id="instructorDepartment"
+              variant="outlined"
+              fullWidth
+              sx={{
+                backgroundColor: "primary",
+                borderRadius: 1,
+                "& .MuiInputLabel-root": {
+                  color: "secondary",
+                },
+                "& .MuiInputLabel-root.Mui-focused": {
+                  color: "secondary",
+                },
+                "& .MuiOutlinedInput-input": {
+                  color: "secondary",
+                },
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "primary",
+                },
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "primary",
+                },
+                "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "primary",
+                },
+              }}
+            />
+
+            {/* Instructor Rank */}
+            <FormControl
+              fullWidth
+              sx={{
+                backgroundColor: "primary",
+                borderRadius: 1,
+                "& .MuiInputLabel-root": {
+                  color: "secondary",
+                },
+                "& .MuiInputLabel-root.Mui-focused": {
+                  color: "secondary",
+                },
+                "& .MuiOutlinedInput-root": {
+                  color: "secondary",
+                },
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "primary",
+                },
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "primary",
+                },
+                "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "primary",
+                },
+                "& .MuiSelect-icon": {
+                  color: "secondary",
+                },
               }}
             >
+              <InputLabel id="instructor-rank-label">
+                Instructor Rank
+              </InputLabel>
 
-              {/* Instructor First Name */}
-              <TextField
-                label="Instructor First Name"
-                id="instructorFirstName"
-                variant="outlined"
-                fullWidth
-                sx={{
-                  backgroundColor: "primary",
-                  borderRadius: 1,
-
-                  "& .MuiInputLabel-root": {
-                    color: "secondary",
-                  },
-
-                  "& .MuiInputLabel-root.Mui-focused": {
-                    color: "secondary",
-                  },
-
-                  "& .MuiOutlinedInput-input": {
-                    color: "secondary",
-                  },
-
-                  "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "primary",
-                  },
-
-                  "&:hover .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "primary",
-                  },
-
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "primary",
-                    },
-                }}
-              />
-
-              {/* Instructor Last Name */}
-              <TextField
-                label="Instructor Last Name"
-                id="instructorLastName"
-                variant="outlined"
-                fullWidth
-                sx={{
-                  backgroundColor: "primary",
-                  borderRadius: 1,
-
-                  "& .MuiInputLabel-root": {
-                    color: "secondary",
-                  },
-
-                  "& .MuiInputLabel-root.Mui-focused": {
-                    color: "secondary",
-                  },
-
-                  "& .MuiOutlinedInput-input": {
-                    color: "secondary",
-                  },
-
-                  "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "primary",
-                  },
-
-                  "&:hover .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "primary",
-                  },
-
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "primary",
-                    },
-                }}
-              />
-
-              {/* Instructor Department */}
-              <TextField
-                label="Instructor Department"
-                id="instructorDepartment"
-                variant="outlined"
-                fullWidth
-                
-                sx={{
-                  backgroundColor: "primary",
-                  borderRadius: 1,
-
-                  "& .MuiInputLabel-root": {
-                    color: "secondary",
-                  },
-
-                  "& .MuiInputLabel-root.Mui-focused": {
-                    color: "secondary",
-                  },
-
-                  "& .MuiOutlinedInput-input": {
-                    color: "secondary",
-                  },
-
-                  "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "primary",
-                  },
-
-                  "&:hover .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "primary",
-                  },
-
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "primary",
-                    },
-                }}
-              />
-
-              {/* Instructor Rank */}
-              <FormControl
-                fullWidth
-                sx={{
-                  backgroundColor: "primary",
-                  borderRadius: 1,
-
-                  "& .MuiInputLabel-root": {
-                    color: "secondary",
-                  },
-
-                  "& .MuiInputLabel-root.Mui-focused": {
-                    color: "secondary",
-                  },
-
-                  "& .MuiOutlinedInput-root": {
-                    color: "secondary",
-                  },
-
-                  "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "primary",
-                  },
-
-                  "&:hover .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "primary",
-                  },
-
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "primary",
-                    },
-
-                  "& .MuiSelect-icon": {
-                    color: "secondary",
-                  },
-                }}
+              <Select
+                labelId="instructor-rank-label"
+                id="instructorRank"
+                label="Instructor Rank"
+                defaultValue="Instructor"
               >
-                <InputLabel id="instructor-rank-label">
-                  Instructor Rank
-                </InputLabel>
+                <MenuItem value="Instructor">
+                  Instructor
+                </MenuItem>
 
-                <Select
-                  labelId="instructor-rank-label"
-                  id="instructorRank"
-                  label="Instructor Rank"
-                  defaultValue="Instructor"
-                >
-                  <MenuItem value="Instructor">
-                    Instructor
-                  </MenuItem>
+                <MenuItem value="Assistant Professor">
+                  Assistant Professor
+                </MenuItem>
 
-                  <MenuItem value="Assistant Professor">
-                    Assistant Professor
-                  </MenuItem>
+                <MenuItem value="Associate Professor">
+                  Associate Professor
+                </MenuItem>
 
-                  <MenuItem value="Associate Professor">
-                    Associate Professor
-                  </MenuItem>
+                <MenuItem value="Professor">
+                  Professor
+                </MenuItem>
+              </Select>
+            </FormControl>
 
-                  <MenuItem value="Professor">
-                    Professor
-                  </MenuItem>
-                </Select>
-              </FormControl>
-
-              {/* Instructor Email */}
-              <TextField
-                label="Instructor Email Address"
-                id="instructorEmail"
-                variant="outlined"
-                fullWidth
-                sx={{
-                  backgroundColor: "primary",
-                  borderRadius: 1,
-
-                  "& .MuiInputLabel-root": {
-                    color: "secondary",
-                  },
-
-                  "& .MuiInputLabel-root.Mui-focused": {
-                    color: "secondary",
-                  },
-
-                  "& .MuiOutlinedInput-input": {
-                    color: "secondary",
-                  },
-
-                  "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "primary",
-                  },
-
-                  "&:hover .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "primary",
-                  },
-
-                  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-                    {
-                      borderColor: "primary",
-                    },
-                }}
-              />
-
-              {/* Submit Button */}
-              <Button
-                type="submit"
-                variant="contained"
-                size="large"
-                sx={{
-                  backgroundColor: "primary",
+            {/* Instructor Email */}
+            <TextField
+              label="Instructor Email Address"
+              id="instructorEmail"
+              variant="outlined"
+              type="email"
+              fullWidth
+              required
+              sx={{
+                backgroundColor: "primary",
+                borderRadius: 1,
+                "& .MuiInputLabel-root": {
                   color: "secondary",
-                  fontWeight: "bold",
+                },
+                "& .MuiInputLabel-root.Mui-focused": {
+                  color: "secondary",
+                },
+                "& .MuiOutlinedInput-input": {
+                  color: "secondary",
+                },
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "primary",
+                },
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "primary",
+                },
+                "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "primary",
+                },
+              }}
+            />
 
-                  "&:hover": {
-                    backgroundColor: "info",
-                  },
-                }}
-              >
-                Submit
-              </Button>
-
-            </Box>
-          </Paper>
-        </Box>
+            {/* Submit Button */}
+            <Button
+              type="submit"
+              variant="contained"
+              size="large"
+              sx={{
+                backgroundColor: "primary",
+                color: "secondary",
+                fontWeight: "bold",
+                "&:hover": {
+                  backgroundColor: "info",
+                },
+              }}
+            >
+              Submit
+            </Button>
+          </Box>
+        </Paper>
       </Box>
+    </Box>
   );
 }
 
-export default AddInstructor;
+export default Instructors;
