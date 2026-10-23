@@ -3,12 +3,12 @@ import type { FormEvent } from "react";
 export function validateInstructorForm(
   event: FormEvent<HTMLFormElement>
 ) {
-  // Prevent the page from refreshing
+  // Prevent the form from refreshing the page
   event.preventDefault();
 
-  console.log("Instructor validation is running!");
+  console.log("Validation function is running!");
 
-  // Get the form values
+  // Get the form fields
   const form = event.currentTarget;
 
   const firstName = (
@@ -27,14 +27,17 @@ export function validateInstructorForm(
     form.querySelector("#instructorEmail") as HTMLInputElement
   ).value.trim();
 
-  // Allow letters, spaces, hyphens, and apostrophes
+  // Rank is a select list, so it needs no validation
+
+  // Names and department may contain letters, spaces,
+  // hyphens, and apostrophes
   const namePattern = /^[A-Za-z '-]+$/;
 
-  // Email: 2 or 3 letters, exactly 3 digits,
-  // followed by @marietta.edu
-  const emailPattern =
-    /^[A-Za-z]{2,3}[0-9]{3}@marietta\.edu$/;
+  // Email must have 2-3 letters, 3 digits, and
+  // the Marietta College email domain
+  const emailPattern = /^[A-Za-z]{2,3}[0-9]{3}@marietta\.edu$/;
 
+  // Store errors
   const errors: string[] = [];
 
   // Validate first name
@@ -56,10 +59,7 @@ export function validateInstructorForm(
   }
 
   // Validate department (optional)
-  if (
-    department !== "" &&
-    !namePattern.test(department)
-  ) {
+  if (department !== "" && !namePattern.test(department)) {
     errors.push(
       "Instructor's Department may only contain letters, spaces, hyphens, and apostrophes."
     );
@@ -74,7 +74,7 @@ export function validateInstructorForm(
     );
   }
 
-  // Display errors or success
+  // Show errors or success
   if (errors.length > 0) {
     alert(
       "Please correct the following errors:\n\n" +

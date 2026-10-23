@@ -1,4 +1,3 @@
-
 import type { FormEvent } from "react";
 
 export function validateStudentForm(
@@ -87,4 +86,3 @@ export function validateStudentForm(
 
   alert("Student information passed validation!");
 }
-

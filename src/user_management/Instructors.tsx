@@ -1,273 +1,119 @@
-
 import {
-  Typography,
   Box,
+  Typography,
   TextField,
   Button,
-  Paper,
-  FormControl,
-  InputLabel,
-  Select,
   MenuItem,
+  Paper,
 } from "@mui/material";
-import type { FormEvent } from "react";
+import { validateInstructorForm } from "./InstructorsValidation";
 
-function validateInstructorForm(event: FormEvent<HTMLFormElement>) {
-  event.preventDefault();
+// Shared styling for every field
+const fieldStyles = {
+  "& .MuiInputLabel-root": { color: "#bbb" },
+  "& .MuiOutlinedInput-root": {
+    color: "white",
+    "& fieldset": { borderColor: "#777" },
+    "&:hover fieldset": { borderColor: "white" },
+  },
+  "& .MuiSvgIcon-root": { color: "white" },
+};
 
-  if (!event.currentTarget.checkValidity()) {
-    event.currentTarget.reportValidity();
-  }
-}
-
-function Instructors() {
+export default function Instructors() {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        minHeight: "100vh",
-        flexDirection: "column",
-        backgroundColor: "secondary",
-        color: "primary",
-      }}
-    >
-      {/* Add Instructor Form */}
-      <Box
-        component="main"
+    <Box sx={{ flexGrow: 1, p: 4 }}>
+      <Paper
+        elevation={3}
         sx={{
-          flexGrow: 1,
-          padding: 4,
+          p: 4,
+          maxWidth: 600,
+          mx: "auto",
+          backgroundColor: "#262626",
         }}
       >
-        <Paper
-          elevation={3}
-          sx={{
-            padding: 4,
-            maxWidth: 600,
-            margin: "0 auto",
-          }}
+        <Typography
+          variant="h4"
+          component="h1"
+          align="center"
+          gutterBottom
+          sx={{ color: "white" }}
         >
-          <Typography
-            variant="h4"
-            color="textPrimary"
-            component="h1"
-            gutterBottom
+          Add Instructor
+        </Typography>
+
+        {/* noValidate turns off the browser's "Please fill out this field" bubble */}
+        <Box
+          component="form"
+          onSubmit={validateInstructorForm}
+          noValidate
+          sx={{ display: "flex", flexDirection: "column", gap: 2 }}
+        >
+          {/* First Name */}
+          <TextField
+            id="instructorFirstName"
+            label="Instructor First Name"
+            variant="outlined"
+            fullWidth
+            sx={fieldStyles}
+          />
+
+          {/* Last Name */}
+          <TextField
+            id="instructorLastName"
+            label="Instructor Last Name"
+            variant="outlined"
+            fullWidth
+            sx={fieldStyles}
+          />
+
+          {/* Department */}
+          <TextField
+            id="instructorDepartment"
+            label="Instructor Department"
+            variant="outlined"
+            fullWidth
+            sx={fieldStyles}
+          />
+
+          {/* Rank */}
+          <TextField
+            id="instructorRank"
+            label="Instructor Rank"
+            select
+            defaultValue="Instructor"
+            fullWidth
+            sx={fieldStyles}
           >
-            Add Instructor
-          </Typography>
+            <MenuItem value="Instructor">Instructor</MenuItem>
+            <MenuItem value="Assistant Professor">
+              Assistant Professor
+            </MenuItem>
+            <MenuItem value="Associate Professor">
+              Associate Professor
+            </MenuItem>
+            <MenuItem value="Professor">Professor</MenuItem>
+          </TextField>
 
-          <Box
-            component="form"
-            onSubmit={validateInstructorForm}
-            noValidate
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              gap: 2,
-            }}
+          {/* Email */}
+          <TextField
+            id="instructorEmail"
+            label="Instructor Email Address"
+            variant="outlined"
+            fullWidth
+            sx={fieldStyles}
+          />
+
+          {/* Submit Button */}
+          <Button
+            type="submit"
+            variant="contained"
+            size="large"
+            sx={{ fontWeight: "bold" }}
           >
-            {/* Instructor First Name */}
-            <TextField
-              label="Instructor First Name"
-              id="instructorFirstName"
-              variant="outlined"
-              fullWidth
-              required
-              sx={{
-                backgroundColor: "primary",
-                borderRadius: 1,
-                "& .MuiInputLabel-root": {
-                  color: "secondary",
-                },
-                "& .MuiInputLabel-root.Mui-focused": {
-                  color: "secondary",
-                },
-                "& .MuiOutlinedInput-input": {
-                  color: "secondary",
-                },
-                "& .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "primary",
-                },
-                "&:hover .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "primary",
-                },
-                "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "primary",
-                },
-              }}
-            />
-
-            {/* Instructor Last Name */}
-            <TextField
-              label="Instructor Last Name"
-              id="instructorLastName"
-              variant="outlined"
-              fullWidth
-              required
-              sx={{
-                backgroundColor: "primary",
-                borderRadius: 1,
-                "& .MuiInputLabel-root": {
-                  color: "secondary",
-                },
-                "& .MuiInputLabel-root.Mui-focused": {
-                  color: "secondary",
-                },
-                "& .MuiOutlinedInput-input": {
-                  color: "secondary",
-                },
-                "& .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "primary",
-                },
-                "&:hover .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "primary",
-                },
-                "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "primary",
-                },
-              }}
-            />
-
-            {/* Instructor Department (Optional) */}
-            <TextField
-              label="Instructor Department"
-              id="instructorDepartment"
-              variant="outlined"
-              fullWidth
-              sx={{
-                backgroundColor: "primary",
-                borderRadius: 1,
-                "& .MuiInputLabel-root": {
-                  color: "secondary",
-                },
-                "& .MuiInputLabel-root.Mui-focused": {
-                  color: "secondary",
-                },
-                "& .MuiOutlinedInput-input": {
-                  color: "secondary",
-                },
-                "& .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "primary",
-                },
-                "&:hover .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "primary",
-                },
-                "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "primary",
-                },
-              }}
-            />
-
-            {/* Instructor Rank */}
-            <FormControl
-              fullWidth
-              sx={{
-                backgroundColor: "primary",
-                borderRadius: 1,
-                "& .MuiInputLabel-root": {
-                  color: "secondary",
-                },
-                "& .MuiInputLabel-root.Mui-focused": {
-                  color: "secondary",
-                },
-                "& .MuiOutlinedInput-root": {
-                  color: "secondary",
-                },
-                "& .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "primary",
-                },
-                "&:hover .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "primary",
-                },
-                "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "primary",
-                },
-                "& .MuiSelect-icon": {
-                  color: "secondary",
-                },
-              }}
-            >
-              <InputLabel id="instructor-rank-label">
-                Instructor Rank
-              </InputLabel>
-
-              <Select
-                labelId="instructor-rank-label"
-                id="instructorRank"
-                label="Instructor Rank"
-                defaultValue="Instructor"
-              >
-                <MenuItem value="Instructor">
-                  Instructor
-                </MenuItem>
-
-                <MenuItem value="Assistant Professor">
-                  Assistant Professor
-                </MenuItem>
-
-                <MenuItem value="Associate Professor">
-                  Associate Professor
-                </MenuItem>
-
-                <MenuItem value="Professor">
-                  Professor
-                </MenuItem>
-              </Select>
-            </FormControl>
-
-            {/* Instructor Email */}
-            <TextField
-              label="Instructor Email Address"
-              id="instructorEmail"
-              variant="outlined"
-              type="email"
-              fullWidth
-              required
-              sx={{
-                backgroundColor: "primary",
-                borderRadius: 1,
-                "& .MuiInputLabel-root": {
-                  color: "secondary",
-                },
-                "& .MuiInputLabel-root.Mui-focused": {
-                  color: "secondary",
-                },
-                "& .MuiOutlinedInput-input": {
-                  color: "secondary",
-                },
-                "& .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "primary",
-                },
-                "&:hover .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "primary",
-                },
-                "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "primary",
-                },
-              }}
-            />
-
-            {/* Submit Button */}
-            <Button
-              type="submit"
-              variant="contained"
-              size="large"
-              sx={{
-                backgroundColor: "primary",
-                color: "secondary",
-                fontWeight: "bold",
-                "&:hover": {
-                  backgroundColor: "info",
-                },
-              }}
-            >
-              Submit
-            </Button>
-          </Box>
-        </Paper>
-      </Box>
+            Submit
+          </Button>
+        </Box>
+      </Paper>
     </Box>
   );
 }
-
-export default Instructors;
